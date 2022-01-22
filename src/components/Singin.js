@@ -9,6 +9,8 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 function Copyright(props) {
   return (
@@ -26,6 +28,14 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignIn({setName}) {
+const [disabled,setDisabled]=useState(true);
+const[string,setString]=useState("");
+console.log({disabled,string});
+
+useEffect(()=>{
+ const disabled= string === ""
+ setDisabled(disabled);
+},[string]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -54,6 +64,7 @@ export default function SignIn({setName}) {
               label="ニックネーム"
               name="name"
               autoFocus
+              onChange={(e)=>{setString(e.target.value)}}
             />
             
           
@@ -62,6 +73,7 @@ export default function SignIn({setName}) {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              disabled={disabled}
             >
               はじめる
             </Button>
