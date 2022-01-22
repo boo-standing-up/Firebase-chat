@@ -26,15 +26,6 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignIn() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -54,7 +45,7 @@ export default function SignIn() {
           <Typography component="h1" variant="h5">
           チャットアプリにようこそ
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          
             <TextField
               margin="normal"
               required
@@ -74,7 +65,7 @@ export default function SignIn() {
             >
               はじめる
             </Button>
-          </Box>
+          
         </Box>
         <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
