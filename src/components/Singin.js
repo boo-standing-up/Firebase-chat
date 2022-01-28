@@ -65,6 +65,10 @@ useEffect(()=>{
               name="name"
               autoFocus
               onChange={(e)=>{setString(e.target.value)}}
+              onKeyDown={(e)=>{
+            if (e.key === 'Enter') {setName(e.target.value)}
+          }}
+              
             />
             
           
@@ -75,6 +79,7 @@ useEffect(()=>{
               sx={{ mt: 3, mb: 2 }}
               disabled={disabled}
               onClick={()=>{setName(string)}}
+             
             >
               はじめる
             </Button>
