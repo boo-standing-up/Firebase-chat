@@ -30,7 +30,9 @@ const theme = createTheme();
 export default function SignIn({setName}) {
 const [disabled,setDisabled]=useState(true);
 const[string,setString]=useState("");
-console.log({disabled,string});
+const[composition,setComposition]=useState(false);
+
+console.log({disabled,string,composition});
 
 useEffect(()=>{
  const disabled= string === ""
@@ -65,6 +67,12 @@ useEffect(()=>{
               name="name"
               autoFocus
               onChange={(e)=>{setString(e.target.value)}}
+              onKeyDown={(e)=>{
+              if(composition) return;
+                if (e.key === 'Enter') {setName(e.target.value)}
+              }}
+              onCompositionStart={()=>setComposition(true)}
+              onCompositionEnd={()=>setComposition(false)}
             />
             
           
